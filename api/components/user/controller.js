@@ -1,4 +1,7 @@
+const { nanoid } = require('nanoid')
+
 const TABLA = 'user'
+
 
 
 module.exports = (injectedSore) => {
@@ -11,11 +14,31 @@ module.exports = (injectedSore) => {
   }
 
   const get = ( id ) => {
-    return store.get(TABLA, id)
+    return store.get( TABLA, id )
+  }
+
+  const upsert = ( data ) => {
+    const user = {
+      name: data.name
+    }
+
+    if (data.id) {
+      user.id = data.id
+    } else {
+      user.id = nanoid()
+    }
+
+    return store.upsert( TABLA, user )
+  }
+
+  const remove = ( id ) => {
+    return store.remove(TABLA, id)
   }
 
   return {
     list,
-    get
+    get,
+    upsert,
+    remove
   }
 }
