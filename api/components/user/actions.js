@@ -46,11 +46,19 @@ const follow = (req, res, next) => {
     .catch(next)
 }
 
+const following = (req, res, next) => {
+  return Controller.following(req.params.id)
+    .then( data => {
+      return response.success(req, res, data, 200)
+    })
+    .catch(next)
+}
 
 module.exports = {
   list,
   get,
   upsert,
   remove,
-  follow
+  follow,
+  following,
 }

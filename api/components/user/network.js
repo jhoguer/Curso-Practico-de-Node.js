@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get('/', action.list)
 router.post('/follow/:id', secure('follow'), action.follow)
+router.get('/:id/following', action.following)
 router.get('/:id', action.get)
 router.post('/', action.upsert)
 router.put('/', secure('update'), action.upsert)

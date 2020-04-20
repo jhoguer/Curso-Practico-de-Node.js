@@ -46,10 +46,23 @@ module.exports = (injectedSore) => {
   }
 
   const follow = (from, to) => {
-    store.upsert(TABLA + '_follow', {
+    return store.upsert(TABLA + '_follow', {
       user_from: from,
       user_to: to,
-    })
+    })     
+  }
+
+  const following = async (user) => {
+    console.log('este es el ID->', user)
+    const join = {}
+    console.log('Esta mierda es-->', join)
+    join[TABLA] = 'user_to' // { user: 'user_to }
+    console.log('Esta mierda es-->', join)
+    const query = { user_from: user }
+    console.log('Esta mierda query-->', query)
+
+
+    return await store.query(TABLA + '_follow', query, join)
   }
 
   return {
@@ -58,5 +71,6 @@ module.exports = (injectedSore) => {
     upsert,
     remove,
     follow,
+    following,
   }
 }
