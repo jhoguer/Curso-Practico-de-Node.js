@@ -45,10 +45,18 @@ module.exports = (injectedSore) => {
     return store.remove(TABLA, id)
   }
 
+  const follow = (from, to) => {
+    store.upsert(TABLA + '_follow', {
+      user_from: from,
+      user_to: to,
+    })
+  }
+
   return {
     list,
     get,
     upsert,
-    remove
+    remove,
+    follow,
   }
 }
