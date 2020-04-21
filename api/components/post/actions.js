@@ -12,6 +12,15 @@ const list = (req, res, next) => {
   .catch(next)
 }
 
+const upsert = (req, res, next) => {
+  Controller.upsert(req.body)
+    .then(data => {
+      response.success(req, res, data, 201)
+    })
+    .catch(next)
+}
+
 module.exports = {
   list,
+  upsert,
 }

@@ -20,8 +20,24 @@ const get = ( req, res, next ) => {
     .catch(next)
 }
 
-const upsert = ( req, res, next ) => {
+const upsert = ( req, res, next) => {
   let data = req.body
+  console.log('¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿')
+  data.flag = 'create'/////
+  console.log('Pillando el req.body------->', data)
+
+  Controller.upsert(data)
+    .then(user => {
+      response.success(req, res, user, 201)
+    })
+    .catch(next)
+}
+
+const update = ( req, res, next ) => {
+  let data = req.body
+  console.log('¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿¿')
+  data.flag = 'update'/////
+  console.log('Pillando el req.body------->', data)
 
   Controller.upsert(data)
     .then(user => {
@@ -58,6 +74,7 @@ module.exports = {
   list,
   get,
   upsert,
+  update,
   remove,
   follow,
   following,

@@ -55,7 +55,19 @@ const get = (table, id) => {
   })
 }
 
+const upsert = (table, data) => {
+  console.log('En UPSERT UPDATE', data.flag)
+  if (data.flag === 'update') {
+    delete data.flag
+    return update(table, data)
+  } else {
+    delete data.flag
+    return insert(table, data)
+  }
+}
+
 const insert = (table, data) => {
+  console.log('En INSERTAR=====>', data)
   return new Promise((resolve, reject) => {
     connection.query(`INSERT INTO ${table} SET ?`, data, (err, result) => {
       if (err) return reject(err)
@@ -66,6 +78,7 @@ const insert = (table, data) => {
 }
 
 const update = (table, data) => {
+  console.log('En UPDATE=====>', data)
   return new Promise((resolve, reject) => {
     connection.query(`UPDATE ${table} SET ? WHERE id=?`, [data, data.id], (err, result) => {
       if (err) return reject(err)
@@ -75,13 +88,6 @@ const update = (table, data) => {
   })
 }
 
-const upsert = (table, data) => {
-  if (data && data.id) {
-    return update(table, data)
-  } else {
-    return insert(table, data)
-  }
-}
 
 const query = (table, query, join) => {
   let joinQuery = ''

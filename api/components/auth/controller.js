@@ -25,6 +25,7 @@ module.exports = (injectedStore) => {
   const upsert = async (data) => {
     const authData = {
       id: data.id,
+      flag: data.flag
     }
 
     if (data.username) {
@@ -34,7 +35,7 @@ module.exports = (injectedStore) => {
     if (data.password) {
       authData.password = await bcrypt.hash(data.password, 5)
     }
-
+    console.log('INSERTAR EN AUTH-auth=========>', data)
     return store.upsert(TABLA, authData)
   }
 

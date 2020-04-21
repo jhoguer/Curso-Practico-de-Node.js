@@ -10,7 +10,12 @@ module.exports = (injectedStore) => {
     return store.list(TABLA)
   }
 
+  const upsert = (data) => {
+    return store.upsert(TABLA, data)
+  }
+
   return {
     list,
+    upsert,
   }
 }

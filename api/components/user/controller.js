@@ -21,7 +21,8 @@ module.exports = (injectedSore) => {
   const upsert = async ( data ) => {
     const user = {
       name: data.name,
-      username: data.username
+      username: data.username,
+      flag: data.flag
     }
 
     if (data.id) {
@@ -31,12 +32,16 @@ module.exports = (injectedSore) => {
     }
 
     if (data.password || data.usernaame) {
+      console.log('INSERTAR EN AUTH-user=========>', data)
       await auth.upsert({
         id: user.id,
         username: user.username,
         password: data.password,
+        flag: data.flag
       })
     }
+
+    console.log('INSERTAR EN USER-user=========>', user)
 
     return store.upsert( TABLA, user )
   }
