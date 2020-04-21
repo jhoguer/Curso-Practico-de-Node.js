@@ -12,6 +12,15 @@ const list = (req, res, next) => {
   .catch(next)
 }
 
+const get = (req, res, next) => {
+  const id = req.params.id
+  Controller.get(id)
+    .then(data => {
+      response.success(req, res, data, 200)
+    })
+    .catch(next)
+}
+
 const upsert = (req, res, next) => {
   req.body.flag = 'create'
   Controller.upsert(req.body)
@@ -23,5 +32,6 @@ const upsert = (req, res, next) => {
 
 module.exports = {
   list,
+  get,
   upsert,
 }

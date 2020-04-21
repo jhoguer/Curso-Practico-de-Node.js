@@ -15,7 +15,7 @@ const verify = (token) => {
     return jwt.verify(token, secret)
 
   } catch(err) {
-    throw error('Se reompio en verify', 500)
+    throw error(err.message, 500)
   }
 }
 
@@ -49,7 +49,7 @@ const decodeHeader = (req) => {
 const check = {
   own: (req, owner) => {
     const decoded = decodeHeader(req)
-    console.log(decoded)
+    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE>', req)
 
     if (decoded.id !== owner) {
       throw error('No puedes hacer esto', 401)
@@ -57,6 +57,7 @@ const check = {
   },
   logged: (req) => {
     const decoded = decodeHeader(req)
+    console.log('<<<<<<<<<<<<<>>>>>>>>>>>>> el DECODE DE LOGGED>>>>>>>>', decoded)
   },
 }
 

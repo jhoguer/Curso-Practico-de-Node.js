@@ -109,9 +109,20 @@ const query = (table, query, join) => {
   })
 }
 
+const getPost = (table, id) => {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM ${table} WHERE user = "${id}"`, (err, data) => {
+      if (err) return reject(err)
+
+      resolve(data)
+    })
+  })
+}
+
 module.exports = {
   list,
   get,
   upsert,
-  query
+  query,
+  getPost
 }

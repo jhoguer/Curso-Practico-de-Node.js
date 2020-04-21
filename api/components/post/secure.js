@@ -15,6 +15,11 @@ module.exports = checkAuth = (action) => {
         next()
         break
 
+      case 'logged':
+        auth.check.logged(req)
+        next()
+        break
+
       default:
         next()
     }
