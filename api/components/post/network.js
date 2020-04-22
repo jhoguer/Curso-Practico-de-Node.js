@@ -9,7 +9,7 @@ const router = express.Router()
 router.get('/', action.list)
 router.get('/:id', secure('logged'), action.get)
 router.patch('/:id', secure('update'), action.patch)
-router.post('/:id', secure('logged'), action.upsert)
+router.post('/', secure('logged'), action.upsert)
 
 
 module.exports = router

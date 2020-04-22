@@ -18,9 +18,14 @@ module.exports = (injectedStore) => {
     return store.patch(TABLA, data, postId)
   }
 
+  const insertPost = (data) => {
+    return store.upsert(TABLA, data)
+  }
+
   return {
     list,
     get,
     upsert,
+    insertPost
   }
 }

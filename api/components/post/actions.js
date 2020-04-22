@@ -23,7 +23,7 @@ const get = (req, res, next) => {
 
 const upsert = (req, res, next) => {
   req.body.flag = 'create'
-  Controller.upsert(req.body)
+  Controller.insertPost(req.body)
     .then(data => {
       response.success(req, res, data, 201)
     })
