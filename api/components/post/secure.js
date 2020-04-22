@@ -10,11 +10,6 @@ module.exports = checkAuth = (action) => {
         next()
         break
       
-      case 'post':
-        auth.check.logged(req)
-        next()
-        break
-
       case 'logged':
         auth.check.logged(req)
         next()

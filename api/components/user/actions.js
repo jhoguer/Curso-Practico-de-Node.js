@@ -41,7 +41,7 @@ const update = ( req, res, next ) => {
 
   Controller.upsert(data)
     .then(user => {
-      response.success(req, res, user, 201)
+      response.success(req, res, user, 200)
     })
     .catch(next)
 }

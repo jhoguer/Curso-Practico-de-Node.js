@@ -49,7 +49,7 @@ const decodeHeader = (req) => {
 const check = {
   own: (req, owner) => {
     const decoded = decodeHeader(req)
-    console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE>', req)
+    // console.log('EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE>', req)
 
     if (decoded.id !== owner) {
       throw error('No puedes hacer esto', 401)
