@@ -8,7 +8,7 @@ const TABLA = 'user'
 module.exports = (injectedSore) => {
   let store = injectedSore
   if (!store) {
-    store = require('../../../store/dummy')
+    store = require('../../../store/remote-mysql')
   }
   const list = () => {
     return store.list(TABLA)

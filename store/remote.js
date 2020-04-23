@@ -2,6 +2,7 @@ const request = require('request');
 
 function createRemoteDB(host, port) {
   const URL = `http://${host}:${port}`;
+  console.log('Imprimiedo la URL', URL)
 
   const list = (table) => {
     return req('GET', table);
@@ -19,7 +20,7 @@ function createRemoteDB(host, port) {
 
   // }
 
-  const req = (method, table, data) => {
+  function req(method, table, data) {
     let url = `${URL}/${table}`;
     body = '';
 

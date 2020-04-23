@@ -17,8 +17,8 @@ const swaggerDoc = require('./swagger.json')
 
 // ROUTER
 app.use('/api/user', user)
-app.use('/api/auth', auth)
-app.use('/api/post', post)
+// app.use('/api/auth', auth)
+// app.use('/api/post', post)
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
 // Debe ser el ultimo middleware
